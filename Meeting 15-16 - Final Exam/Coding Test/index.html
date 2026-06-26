@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Username &amp; Password Maker</title>
+  <style>
+    body { margin:0; color:#111; line-height:1.6;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
+    .wrap { max-width:520px; margin:0 auto; padding:72px 24px; }
+    h1 { font-family:Georgia,serif; font-size:28px; font-weight:600; margin:0 0 8px; }
+    .hint { color:#6b6b6b; font-size:14px; margin:0 0 24px; }
+    #output { font-size:24px; font-weight:600; padding:24px 0; min-height:34px; margin-top:8px;
+      border-top:1px solid #e4e4e4; border-bottom:1px solid #e4e4e4; }
+    button { font:inherit; font-size:14px; cursor:pointer; border:1px solid #111;
+      background:#fff; color:#111; padding:8px 18px; margin-top:20px; transition:all .12s ease; }
+    button:hover { background:#111; color:#fff; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Username &amp; Password Maker</h1>
+    <p class="hint">Akan muncul prompt: ketik 1 untuk Username atau 2 untuk Password. Hasil tampil di bawah &amp; di Console (F12)</p>
+    <div id="output"></div>
+    <button onclick="location.reload()">Generate Lagi</button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript Developer — Homework Teens</title>
+  <style>
+    :root { --ink:#111; --muted:#6b6b6b; --line:#e4e4e4; --soft:#f6f6f6; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:#fff; color:var(--ink); line-height:1.6;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+      -webkit-font-smoothing:antialiased; }
+    .wrap { max-width:680px; margin:0 auto; padding:80px 24px 120px; }
+    .eyebrow { font-family:ui-monospace,"SF Mono",Menlo,monospace; font-size:12px;
+      letter-spacing:.09em; text-transform:uppercase; color:var(--muted); margin:0 0 28px; }
+    h1 { font-family:Georgia,"Times New Roman",serif; font-size:42px; font-weight:600;
+      letter-spacing:-.015em; margin:0 0 10px; }
+    .sub { color:var(--muted); font-size:15px; margin:0 0 12px; }
+    .howto { color:var(--muted); font-size:13px; margin:0 0 56px;
+      border-left:2px solid var(--line); padding-left:12px; }
+    .meeting { border-top:1px solid var(--line); padding:28px 0; }
+    .m-head { display:flex; align-items:baseline; gap:12px; margin-bottom:4px; }
+    .m-num { font-family:ui-monospace,Menlo,monospace; font-size:13px; color:var(--muted); }
+    .m-title { font-size:20px; font-weight:600; margin:0; }
+    .task { margin-top:16px; }
+    .task-row { display:flex; align-items:center; gap:12px; }
+    .task-name { flex:1; font-size:14px; }
+    button, a.btn { font:inherit; font-size:13px; cursor:pointer; text-decoration:none;
+      border:1px solid var(--ink); background:#fff; color:var(--ink);
+      padding:5px 14px; transition:all .12s ease; white-space:nowrap; }
+    button:hover, a.btn:hover { background:var(--ink); color:#fff; }
+    .note { font-size:13px; color:var(--muted); font-style:italic; }
+    pre.out { margin:10px 0 0; padding:14px 16px; background:var(--soft);
+      border:1px solid var(--line); font-family:ui-monospace,Menlo,monospace;
+      font-size:13px; line-height:1.5; white-space:pre-wrap; overflow-x:auto; display:none; }
+    pre.out.show { display:block; }
+    .pending { opacity:.5; }
+    footer { margin-top:56px; padding-top:24px; border-top:1px solid var(--line);
+      font-size:13px; color:var(--muted); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="eyebrow">Timedoor Academy - Teen Homework</p>
+    <h1>Javascript Developer</h1>
+    <p class="sub">Homework submission · Meeting 1&ndash;16 | by Abang Audric | Branch Pangkal Pinang</p>
+    <p class="sub">Repo: <a href="https://github.com/Mitchyru/HW-Teens" target="_blank">github.com/Mitchyru/HW-Teens</a></p>
+    <p class="howto">Klik <strong>Run</strong> untuk menjalankan kode tiap task &amp; melihat hasilnya di sini. Project interaktif dibuka di halaman sendiri lewat <strong>Open</strong>.</p>
+    <div id="app"></div>
+    <footer>Kode sumber : <a href="https://github.com/Mitchyru/HW-Teens" target="_blank">github.com/Mitchyru/HW-Teens</a></footer>
+  </div>
+
+  <script>
+    var M = [
+      { n:"01", title:"Hello, World!", dir:"Meeting 01 - Hello, World!", tasks:[
+        { name:"CP1 Task 1 : Christmas Tree, Fish Fish, Meow Meow", run:"meeting1.js" },
+        { name:"CP2 : Ozaria (game)" }
+      ]},
+      { n:"02", title:"Hoax and Variable", dir:"Meeting 02 - Hoax and Variable", tasks:[
+        { name:"CP3 : string length &amp; toLowerCase", run:"meeting2.js" }
+      ]},
+      { n:"03", title:"Operator and Expression", dir:"Meeting 03 - Operator and Expression", tasks:[
+        { name:"CP1 Task 2 : operator modulo", run:"meeting3.js" }
+      ]},
+      { n:"04", title:"Storing Multiple Data in Array", dir:"Meeting 04 - Storing Multiple Data in Array", tasks:[
+        { name:"CP3 Task 1 : shopping list", run:"meeting4-T1.js" },
+        { name:"CP3 Task 2 : holidayPlans (.push)", run:"meeting4-T2.js" }
+      ]},
+      { n:"05", title:"Conditional Logic", dir:"Meeting 05 - Conditional Logic", tasks:[
+        { name:"Task 1 : positif / negatif / nol", run:"meeting5-CP1-T1.js" },
+        { name:"Task 2 : kelayakan SIM", run:"meeting5-CP1-T2.js" },
+        { name:"Task 3 : grade nilai", run:"meeting5-CP1-T3.js" },
+        { name:"Task 4 : diskon member", run:"meeting5-CP1-T4.js" },
+        { name:"Task 5 : pesan player", run:"meeting5-CP1-T5.js" },
+        { name:"Task 6 : Posisi Player + game over", run:"meeting5-CP2.js" }
+      ]},
+      { n:"06", title:"Switch Statement", dir:"Meeting 06 - Switch Statement", tasks:[
+        { name:"Fill the blank : kalkulator switch", run:"meeting6-CP1.js" },
+        { name:"Challenge : angka acak 1-10", run:"meeting6-CP1-challenge.js" },
+        { name:"Ternary : set level game", run:"meeting6-CP-2.js" }
+      ]},
+      { n:"07", title:"For Loop", dir:"Meeting 07 - For Loop", tasks:[
+        { name:"CP1 Task 1 : nama 20 baris", run:"meeting7-CP1-T1.js" },
+        { name:"CP1 Task 2 : angka 1-20 (mendatar)", run:"meeting7-CP1-T2.js" },
+        { name:"CP1 Task 3 : kelipatan 5", run:"meeting7-CP1-T3.js" },
+        { name:"CP2 : total jam main Steve", run:"meeting7-CP2.js" }
+      ]},
+      { n:"08", title:"Written Exam", dir:"Meeting 08 - Written Exam", tasks:[
+        { name:"Ujian tertulis (screenshot hasil)" }
+      ]},
+      { n:"09", title:"Nested For Loop", dir:"Meeting 09 - Nested For Loop", tasks:[
+        { name:"CP1 : nested for (3 platform x 2 carrot)", run:"meeting9-CP1.js" },
+        { name:"CP2 Task 1 : acak sampai 5 (while)", run:"meeting9-CP2-T1.js" },
+        { name:"CP2 Task 2 : acak sampai 5 (do-while)", run:"meeting9-CP2-T2.js" }
+      ]},
+      { n:"10", title:"Create Some Programs", dir:"Meeting 10 - Create Some Programs", tasks:[
+        { name:"Calculator : operasi 2 angka", open:"Meeting 10 - Calculator/index.html" },
+        { name:"Country Trivia : 5 pertanyaan", open:"Meeting 10 - Trivia/index.html" }
+      ]},
+      { n:"11", title:"Food Recommendation", dir:"Meeting 11 - Food Recommendation", tasks:[
+        { name:"Food Recommendation", open:"index.html" },
+        { name:"Challenge", open:"challenge.html" }
+      ]},
+      { n:"12", title:"Math Geometry Solver", dir:"Meeting 12 - Math Geometry Solver", tasks:[
+        { name:"Math Geometry Solver", open:"index.html" }  
+      ]},
+      { n:"13", title:"Arrow Function", dir:"Meeting 13 - Arrow Function", tasks:[
+        { name:"CP2 : Arrow Function", run:"meeting13-CP2.js" }
+      ]},
+      { n:"14", title:"Breaking News, Returning Value", dir:"Meeting 14 - Breaking News, Return, For Each", tasks:[
+        { name:"CP1 : Find The Number", run:"meeting14-CP1.js" },
+        { name:"CP2 : Length Converter", run:"meeting14-CP2.js" },
+        { name:"CP2 Challenge", run:"meeting14-CP2-challenge.js" },
+        { name:"CP3 : Invitation Label", run:"meeting14-CP3.js" }
+      ]},
+      { n:"15-16", title:"Final Exam", dir:"Meeting 15-16 - Final Exam", tasks:[
+        { name:"Written Exam", note:"Screenshot hasil." },
+        { name:"Coding Test", open:"Coding Test/index.html" }
+      ]}
+    ];
+
+    function runTask(dir, file, outEl) {
+      outEl.className = "out show";
+      outEl.textContent = "Running...";
+      var path = encodeURI(dir + "/" + file);
+      fetch(path).then(function(res){
+        if (!res.ok) throw new Error("File tidak ditemukan");
+        return res.text();
+      }).then(function(code){
+        var lines = [];
+        var origLog = console.log;
+        console.log = function(){
+          lines.push(Array.prototype.slice.call(arguments).map(String).join(" "));
+        };
+        try { new Function(code)(); }
+        finally { console.log = origLog; }
+        outEl.textContent = lines.length ? lines.join("\n") : "(tidak ada output)";
+      }).catch(function(e){
+        outEl.textContent = "Error: " + e.message + "\n(buka via Live Server / GitHub Pages, bukan file://)";
+      });
+    }
+
+    var app = document.getElementById("app");
+    M.forEach(function(m){
+      var sec = document.createElement("div");
+      sec.className = "meeting" + (m.pending ? " pending" : "");
+      sec.innerHTML = '<div class="m-head"><span class="m-num">' + m.n +
+        '</span><h2 class="m-title">' + m.title + '</h2></div>';
+      m.tasks.forEach(function(t){
+        var task = document.createElement("div"); task.className = "task";
+        var row = document.createElement("div"); row.className = "task-row";
+        row.innerHTML = '<span class="task-name">' + t.name + '</span>';
+        if (t.run) {
+          var btn = document.createElement("button"); btn.textContent = "Run";
+          var out = document.createElement("pre"); out.className = "out";
+          btn.onclick = function(){ runTask(m.dir, t.run, out); };
+          row.appendChild(btn); task.appendChild(row); task.appendChild(out);
+        } else if (t.open) {
+          var a = document.createElement("a"); a.className = "btn";
+          a.href = m.dir + "/" + t.open; a.textContent = "Open";
+          row.appendChild(a); task.appendChild(row);
+        } else {
+          var s = document.createElement("span"); s.className = "note";
+          s.textContent = t.note || ""; row.appendChild(s); task.appendChild(row);
+        }
+        sec.appendChild(task);
+      });
+      app.appendChild(sec);
+    });
+  </script>
+</body>
+</html>

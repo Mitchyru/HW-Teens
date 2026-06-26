@@ -1,0 +1,21 @@
+var operator = prompt('Enter operator( +, -, * or / ): ');
+var number1 = parseFloat(prompt('Enter first number: '));
+var number2 = parseFloat(prompt('Enter second number: '));
+var result;
+
+if (!isNaN(number1) && !isNaN(number2)) {
+  if (operator == '+') {
+    result = number1 + number2;
+  } else if (operator == '-') {
+    result = number1 - number2;
+  } else if (operator == '*') {
+    result = number1 * number2;
+  } else if (operator == '/') {
+    result = number1 / number2;
+  } else {
+    alert('No Operator choosen');
+  }
+  console.log(`${number1} ${operator} ${number2} = ${result}`);
+} else {
+  alert('Your input is not a number');
+}
